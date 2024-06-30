@@ -2,7 +2,7 @@
 
 ## Overview
 
-My Blog Web App is a simple monolithic web application designed for users to read and save blog posts. The application is built with an integrated architecture, combining both the frontend and backend into a single cohesive unit. This README file provides an overview of the features and functionalities of the web app.
+My Blog Web App using Django is a simple monolithic web application designed for users to read and save blog posts. The application is built with an integrated architecture, combining both the frontend and backend into a single cohesive unit. This README file provides an overview of the features and functionalities of the web app.
 
 ## Features
 
