@@ -1,0 +1,64 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %} 
+{{ post.title }}
+{% endblock %} 
+
+{% block style %} 
+<link rel="stylesheet" href="{% static "post.css" %}" /> 
+{% endblock %}
+
+{% block content %}
+<section id="summary">
+  
+  <h2>{{ post.title }}</h2>
+  
+  
+  <form class = "form_read_later" action="{% url "read_later" %}" method ="POST">
+    {% csrf_token %}
+
+    <input type="hidden" name ="post_id" value ={{post.id}} >
+
+    <button class = "session_button_blue {% if red %} red{% endif %}" type = "submit">Read Later</button>
+  </form>
+  
+
+
+  <article>
+    <img src="{{post.img.url}}" alt="{{ post.title }}" />
+    <address>By {{ post.author.name }}</address>
+    <div>Last updated on <time>{{ post.date|date:"d M Y" }}</time></div>
+    
+  </article>
+</section>
+
+<main>
+  {{ post.content|linebreaks }}
+</main>
+<p class = "tags">
+  {% for tag in tags %}
+  {{tag.tag_name}} 
+  {% endfor %}
+</p>
+<form action="{% url "post" post.slug %}" method ="POST">
+  <div class ="form-control">
+  {% csrf_token %}
+  {{form.label_tag}}
+  {{form}}
+  {{form.error}}
+<button type = "submit">comment</button>
+</div>
+</form>
+{% for  C in  post_comment %}
+<p class ="tags">
+  
+  anonymous <br>
+  {{C.comment}}
+</p>
+{% endfor %}
+{% endblock %}
+
+
+
+

@@ -1,0 +1,24 @@
+
+
+
+{% load static %}
+
+    
+
+{% for x in posts   %}
+<li>
+    <article class="post">
+      <a href="{% url "post" x.slug %}">
+        <img src="{{x.img.url}}" alt="{{ x.title }}"
+        />
+        <div class="post__content">
+          <h3>{{ x.title }}</h3>
+          <p>
+            {{ x.brief }}
+            
+          </p>
+        </div>
+      </a>
+    </article>
+  </li>
+  {% endfor %}

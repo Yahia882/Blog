@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} 
+read later
+{% endblock %} 
+
+{% block style %}
+  <link rel="stylesheet" href="{% static "show_posts.css" %}" />
+  <link rel="stylesheet" href="{% static "all_posts.css" %}" />
+{% endblock %}
+
+{% block content %}
+<section id="all-posts">
+  <h2>read later posts</h2>
+  {% if empty %}
+  <h3>u dont have read later posts</h3>
+  {% endif %}
+  <ul>
+    {% include "snippets/show_posts.html" %}
+  </ul>
+</section>
+{% endblock %}
+
+
